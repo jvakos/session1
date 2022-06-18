@@ -10,7 +10,7 @@ namespace MyLib1
     {
         public string SendSMS(string number, string text)
         {
-            return "sms send!";
+            return "Fanis";
         }
     }
 }
