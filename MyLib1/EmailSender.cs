@@ -5,7 +5,7 @@
         public string SendEmail(string to,string subject,string body)
         {
             //TODO:send the email
-            return "email sent succesfuly";
+            return "imbakabros@hotmail.com";
         }
     }
 }
