@@ -1,14 +1,19 @@
 ﻿
-class Lesson
+class Lesson 
 {
-    Teacher teacher;
-    Student student;
+    Teacher teacher;    
+    Student[] students;
 
 
     public void PirntNames()
     {
-        PrintNamesAndBirthdays(student);
+
         PrintNamesAndBirthdays(teacher);
+
+        for (int i = 0; i < students.Length; i++)
+        {
+            PrintNamesAndBirthdays(students[i]);
+        }
     }
 
     private void PrintNamesAndBirthdays(Person p)

@@ -16,30 +16,30 @@
 
 
 
-////Console.WriteLine("give num1");
-////string input1 = Console.ReadLine();
+Console.WriteLine("give num1");
+string input1 = Console.ReadLine();
 
-////Console.WriteLine("give num2");
-////string input2 = Console.ReadLine();
+Console.WriteLine("give num2");
+string input2 = Console.ReadLine();
 
-//int num1 = 0; //int.Parse(input1);
-//int num2 = 5; //int.Parse(input2);
+int num1 = int.Parse(input1);
+int num2 = int.Parse(input2);
 
-//PrintSum(ref num1, num2);
+PrintSum(ref num1, num2);
 
-//Console.WriteLine("num1=" + num1);
-
-
+Console.WriteLine("num1=" + num1);
 
 
 
 
-//void PrintSum(ref int n1,int n2)
-//{
-//    if (n1 == 0) n1 = 10;
-//    int sum = n1 + n2;
-//    Console.WriteLine("sum=" + sum);
-//}
+
+
+void PrintSum(ref int n1, int n2)
+{
+    if (n1 == 0) n1 = 10;
+    int sum = n1 + n2;
+    Console.WriteLine("sum=" + sum);
+}
 
 
 
