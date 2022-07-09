@@ -8,40 +8,40 @@ namespace FanisSensors
 {
     internal abstract class BaseSensor
     {
-        public SensorType SensorType { get; set; }
+
+        public abstract bool IsVoltageValid();
+        
+
+        public abstract SensorTypes SensorType { get;  }
 
         public double Value { get; set; }
 
-
-
+        public double Voltage { get; set; }
         /// <summary>
         /// Reads the value from the sensor and store it to Value
         /// </summary>
         public void ReadValue()
         {
-            Value = 1.1;
+            if (IsVoltageValid())
+            {
+                Value = 1.1;
+            }
 
         }
 
-        public void SensorSpecs()
-        {
-            public int SVoltage;
-
-            
-
-
-        }
+        
 
     }
 
     
 
 
-    enum SensorType
+    enum SensorTypes
     {
         LightSensor,
         HumiditySensor,
-        TempSensor
+        TempSensor,
+        Sonar
     }
 
     
