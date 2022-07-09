@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ManolisShop.ManolisModels
 {
-    internal class AdressModel
+    internal abstract class BaseValidator
     {
-        public address getaddress { get; set; }
-        public bool HasAddress { get; set; }
-        public string Error { get; set; }
+        public abstract string? Error { get; set; }
 
+        public abstract bool Validate();
     }
 }

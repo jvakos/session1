@@ -12,8 +12,10 @@ namespace ManolisShop
         public DateTime OrderTime { get; set; }
         public string comments { get; set; }
         public int UserAddress { get; set; }
-        public int Price { get; set; }
+        public decimal TotalPrice { get; set; }
         public string Phone { get; set; }
+
+        public List<CartItem> OrderList { get; set; }  
 
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManolisShop
 {
+
     internal class Product
     {
         public int Id { get; set; }
