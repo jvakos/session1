@@ -23,7 +23,18 @@ namespace FanisSensors
 
         }
 
+        public void SensorSpecs()
+        {
+            public int SVoltage;
+
+            
+
+
+        }
+
     }
+
+    
 
 
     enum SensorType
