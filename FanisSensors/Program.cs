@@ -113,33 +113,7 @@ internal class Program
                         
             
 
-        // while (true)
-        // {
-        //     foreach (var sens in Sensors)
-        //     {
-        //         sens.Voltage = randNum.Next(0, 40);
-        //         sens.Value = randNum.Next(MinSensorValue, MaxSensorValue);
-        //         await Task.Delay(250);
-        //         if (sens.IsVoltageValid())
-        //         {
-        //             Console.ForegroundColor = ConsoleColor.Green;
-        //             Console.WriteLine($"value {sens.Value} is valid for a {sens.SensorType} sensor");
-        //             Console.ResetColor();
-        //         }
-        //         else
-        //         {
-        //             Console.ForegroundColor = ConsoleColor.Red;
-        //             Console.WriteLine($"value {sens.Value} is not valid for a {sens.SensorType} sensor");
-        //             Console.ResetColor();
-        //         }
-        //     }
 
-        // //     if (humSens.Value > 50 && sonarSens.Value < 20)
-        // //     {
-        // //         //OpenWindows();
-        // //     }
-        // }
 
     }
 }
-//test
