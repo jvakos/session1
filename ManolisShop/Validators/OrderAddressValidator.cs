@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManolisShop.ManolisModels
+namespace ManolisShop.Validators
 {
     internal class OrderAddressValidator : BaseValidator
     {
         public override string? Error { get; set; }
         public address address { get; set; } = new address();
-        public bool HasAddress { get; set; }
 
         public override bool Validate()
         {
             if (address.Address.Length < 5)
             {
-                Error="Δεν εχετε συμπληρώσει διεύθυνση";
+                Error = "Δεν εχετε συμπληρώσει διεύθυνση";
                 return false;
             }
             if (address.Phone.Length < 5)

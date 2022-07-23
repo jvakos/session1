@@ -14,7 +14,8 @@ namespace ManolisShop
         public string Lastname { get; set; }
         public string Phone { get; set; }
         public string ConfirmPassword { get; set; }
-        
+        public bool HasAcceptPrivacyandPolicy { get; set; }
+
 
     }
 }

@@ -10,8 +10,7 @@ namespace ManolisShop.ManolisModels
     {
         public Register Details { get; set; }
         public bool IsRegister { get; set; }
-        public string Error { get; set; }
-        public bool HasAcceptPrivacyandPolicy { get; set; }
+        
 
     }
 }

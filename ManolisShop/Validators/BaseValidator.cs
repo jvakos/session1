@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManolisShop.ManolisModels
+namespace ManolisShop.Validators
 {
     internal abstract class BaseValidator
     {

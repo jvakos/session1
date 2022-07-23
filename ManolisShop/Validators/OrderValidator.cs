@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManolisShop.ManolisModels
+namespace ManolisShop.Validators
 {
     internal class OrderValidator : BaseValidator
     {
@@ -19,9 +19,10 @@ namespace ManolisShop.ManolisModels
             //check user
             Validators = new List<BaseValidator>();
             Validators.Add(new OrderAddressValidator());
-            Validators.Add(new OrderAddressValidator()); //payment validator
+            Validators.Add(new RegisterValidator());
+            //payment validator
         }
-        
+
 
 
         public override bool Validate()
@@ -30,7 +31,7 @@ namespace ManolisShop.ManolisModels
             {
                 if (!validator.Validate())
                 {
-                    Error=validator.Error;                    
+                    Error = validator.Error;
                 }
             }
 
@@ -38,7 +39,7 @@ namespace ManolisShop.ManolisModels
             return true; //false;
         }
 
-        
+
 
     }
 }
