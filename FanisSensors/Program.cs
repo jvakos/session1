@@ -41,8 +41,7 @@ internal class Program
             Console.Clear();
             Console.WriteLine("\n Menu \n\n 1. Measure\n 2. Display Measures \n 3. Del.Measure  \n 4. Exit Interface \n\n Choose an Option : \n\n");
             var ch = Console.ReadLine();
-            bool success = int.TryParse(ch, out cn);
-            //int cn = int.Parse(ch);
+            bool success = int.TryParse(ch, out cn);            
             if (success)
                     {
                         switch (cn)
@@ -71,10 +70,10 @@ internal class Program
                                                     Console.ResetColor();
                                                 }
                                         }
-                    //     if (humSens.Value > 50 && sonarSens.Value < 20)
-                    //     {
-                    //         //OpenWindows();
-                    //     }
+                                                    //     if (humSens.Value > 50 && sonarSens.Value < 20)
+                                                    //     {
+                                                    //         //OpenWindows();
+                                                    //     }
                                 }
                                 Console.ReadKey();
                             await Task.Delay(1000);                
@@ -84,15 +83,55 @@ internal class Program
                             case 2:
                                 foreach (KeyValuePair<double, DateTime> mes in Measures)  
                                      {  
-                                         Console.WriteLine("Value: {0}, Date: {1}",  
-                                             mes.Key, mes.Value);  
+                                         Console.WriteLine("Value: {0}, Date: {1}",mes.Key, mes.Value);  
                                      }
                                 Console.ReadKey(); 
                             //Console.WriteLine("Choice 2");
                             await Task.Delay(1000);
                             break; 
                             case 3:
-                            Console.WriteLine("Choice 3");
+                            Console.Clear();
+                            Console.WriteLine("\n Choose an Action! \n\n 1. Del.Specific Measurement \n 2. Clear All Measurments \n 3. Exit Action \n");
+                            var cht = Console.ReadLine();
+                            bool su = int.TryParse(ch, out cn);
+                            if (su){
+                                switch (cn)
+                                        {
+                                            case 1:
+                                                // foreach (KeyValuePair<double, DateTime> mes in Measures)  
+                                                //     {  
+                                                //       Console.WriteLine("Value: {0}, Date: {1}",mes.Key, mes.Value);  
+                                                //     }
+                                                //         Console.WriteLine("Write a Key, If it's there, I will Delete it!!");
+                                                //         var key = Console.ReadLine();
+                                                //         string value;
+                                                //         bool keyExists = Measures.TryGetValue(key, out value);
+                                                //         if (keyExists) {
+                                                //             Console.WriteLine("{0} exists in map", key);
+                                                //         }
+                                                //         else {
+                                                //             Console.WriteLine("{0} does not exist in map", key);
+                                                //         }
+                                            break;
+
+                                            case 2:
+                                            Measures.Clear();
+                                            Console.WriteLine("All Done! Measures Cleared...");
+                                            await Task.Delay(1000);
+                                            break;
+
+                                            case 3:
+                                            Console.WriteLine("Stand By.. Exiting");
+                                            await Task.Delay(1000);
+                                            break;
+
+                                            default: Console.WriteLine("Wrong Choice \n\n Available Options are: \n 1. Del.Specific Measurement \n 2. Clear All Measurments \n 3. Exit Action");
+                                            await Task.Delay(1000);
+                                            break;
+                                        }
+                                    }
+                            Console.WriteLine("Wrong Choice");
+                            //Console.WriteLine("Choice 3");
                             await Task.Delay(1000);
                             break; 
                             case 4:
@@ -102,18 +141,11 @@ internal class Program
                             break;
                             default: Console.WriteLine("Wrong Choice");
                             await Task.Delay(1000);
-                            break;                
-                            
+                            break;
                         }
                         
                     }
-                    Console.WriteLine("Wrong Choice");                    
-
+                    Console.WriteLine("Wrong Choice");
                     } while (true);
-                        
-            
-
-
-
     }
 }
