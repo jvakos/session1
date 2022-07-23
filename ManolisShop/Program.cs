@@ -1,10 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ManolisShop;
+using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, World!");
 
 var db = new Database();
 db.Database.EnsureCreated();
+
+//var userWithOrders=db.Users.Include(x => x.Orders).Where(x => x.Id == 1).FirstOrDefault();
+//userWithOrders.Orders[0]
 
 User user;
 if (!db.Users.Any())
