@@ -35,13 +35,15 @@ namespace ManolisShop.Validators
             if (Regisvalidator.Firstname.Length < 1)
             {
                 Error = "Δεν έχετε συμπληρώση το όνομα σας";
-                return false
+                return false;
             }
             if (Regisvalidator.Lastname.Length < 1)
             {
                 Error = "Δεν έχετε συμπληρώση επίθετο";
                 return false;
             }
+
+            return true;
         }
     }
 }
