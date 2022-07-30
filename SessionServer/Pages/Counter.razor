@@ -1,0 +1,37 @@
+﻿@page "/counter"
+
+<PageTitle>To kalathi moy</PageTitle>
+
+
+    <h1>Το καλάθι μου (@AppModel.Cart.Count) </h1>
+
+@foreach (var p in AppModel.Cart){
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://nanosoft.gr/wp-content/uploads/2020/02/cropped-logo-2-225x51.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <p class="card-text">This content is a little bit longer.</p>
+                    <p class="card-text">@p.UnitPrice €</p>
+                    <a href="#" class="btn btn-danger">Αφαίρεση</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<SurveyPrompt Title="How is Blazor working for Counter?" />
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

@@ -1,0 +1,75 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+@if (AppModel.Cart.Count > 0)
+{
+    <a class="btn btn-primary" href="/counter">
+        Καλάθι <span class="badge bg-danger">@AppModel.Cart.Count</span>
+    </a>
+}
+
+
+@foreach (var p in products){
+    <div class="card m-4" style="width: 18rem;">
+        <img src="https://nanosoft.gr/wp-content/uploads/2020/02/cropped-logo-2-225x51.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">@p.Name</h5>
+        <p class="card-text">
+            @p.UnitPrice €
+            @if (p.RemainingStock==0){
+                    <span class="badge rounded-pill bg-danger">Μη διαθέσιμο</span>
+            }else if (p.RemainingStock<4){
+                    <span class="badge rounded-pill bg-warning">Περιορισμένο</span>
+            }
+        </p>
+
+            @if (p.RemainingStock>0)
+            {
+                <a href="#" class="btn btn-primary" @onclick="@(e=>AddToCart(p.ProdId))" >Add cart</a>
+            }
+      </div>
+    </div>
+}
+
+
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+
+
+
+@code{
+    List<Product> products = new();
+
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        products.Add(new Product {ProdId=1, Name = "LAptop", UnitPrice = 700, RemainingStock=100 });
+        products.Add(new Product {ProdId=2, Name = "Keyboard", UnitPrice = 90, RemainingStock=2});
+        products.Add(new Product { ProdId = 2, Name = "Mouse", UnitPrice = 40, RemainingStock = 0 });
+
+        
+
+    }
+
+    void AddToCart(int prodId){
+        foreach (var p in products){
+            if (p.ProdId==prodId){
+                AppModel.Cart.Add(new CartItems{ 
+                    ProdId=prodId,
+                    Name=p.Name,
+                    UnitPrice=p.UnitPrice,
+                    Qnt=1
+                });
+                break;
+            }
+        }
+    }
+
+ 
+
+}

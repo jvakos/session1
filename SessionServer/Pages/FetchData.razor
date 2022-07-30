@@ -1,0 +1,65 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using SessionServer.Data
+@using Syncfusion.Blazor.CircularGauge
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+<a class="btn btn-primary" @onclick="SpeedUp" >Speed up</a>
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<SfCircularGauge  Background="#3333" Theme="Syncfusion.Blazor.Theme.TailwindDark">
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="@speed"></CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>
+
+@code {
+    private WeatherForecast[]? forecasts;
+    int speed=0;
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+
+    void SpeedUp(){
+        speed++;
+    }
+}
