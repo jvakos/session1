@@ -7,8 +7,23 @@ Console.WriteLine("Hello, World!");
 var db = new Database();
 db.Database.EnsureCreated();
 
-//var userWithOrders=db.Users.Include(x => x.Orders).Where(x => x.Id == 1).FirstOrDefault();
-//userWithOrders.Orders[0]
+var userWithOrders = db.Users    
+    .Include(x => x.Orders)
+        .ThenInclude(x=>x.OrderList)
+    .Include(x => x.Orders)
+        .ThenInclude(x => x.Address)
+    .Where(x => x.Id == 1)
+    .FirstOrDefault();
+
+//var orderforUser1 = db.Orders
+//  .Include(x => x.OrderList)
+//.Include(x => x.Address)
+//.Include(x => x.User)
+//.Where(x => x.UserId == 1)
+//.Take(1);
+
+Order value = userWithOrders.Orders[0];
+
 
 User user;
 if (!db.Users.Any())
@@ -29,20 +44,21 @@ else
 var order=new Order
 {    
     User = user,
-    comments = "sxoliaaaa",
+    Comments = "sxoliaaaa",
     OrderTime = DateTime.Now,
     PaymentType = PaymentType.Cash,
-    deliveryfee = 1.5M,
-    address = new address
+    Deliveryfee = 1.5M,
+    Address = new Address
     {
-        Address = "k foumi 74",
+        address = "k foumi 74",
         Ringbell = "Mitsos",
         Phone = "6942521000",
         Town = "Chania",
-        TK = "73100"
+        TK = "73100",
+        User= user,
     },
     TotalPrice = 100,
-    receipt = true,
+    Receipt = true,
     OrderList = new List<CartItem>
     {
         new CartItem
@@ -64,6 +80,8 @@ var order=new Order
     }
 
 };
+
+
 
 db.Orders.Add(order);
 db.SaveChanges();

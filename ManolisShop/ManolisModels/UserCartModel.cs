@@ -5,7 +5,7 @@
         public User User { get; set; }
 
         public List<CartItem> Items { get; set; }
-        public int totalPrice { get; set; }
+        public int TotalPrice { get; set; }
         
     }
 }
