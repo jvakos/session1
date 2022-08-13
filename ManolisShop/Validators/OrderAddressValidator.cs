@@ -9,11 +9,11 @@ namespace ManolisShop.Validators
     internal class OrderAddressValidator : BaseValidator
     {
         public override string? Error { get; set; }
-        public address address { get; set; } = new address();
+        public Address address { get; set; } = new Address();
 
         public override bool Validate()
         {
-            if (address.Address.Length < 5)
+            if (address.address.Length < 5)
             {
                 Error = "Δεν εχετε συμπληρώσει διεύθυνση";
                 return false;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace ManolisShop
 {
@@ -9,6 +10,7 @@ namespace ManolisShop
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite("Data Source=manolishop.db3");
+            optionsBuilder.LogTo(Console.WriteLine);
         }
 
         public DbSet<Order> Orders{ get; set; }
