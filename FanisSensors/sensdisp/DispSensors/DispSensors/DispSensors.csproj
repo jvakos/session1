@@ -5,6 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\imgs\header.jpeg" />
+    <None Include="wwwroot\imgs\pattern1.jpeg" />
+    <None Include="wwwroot\imgs\pattern2.jpeg" />
+    <None Include="wwwroot\imgs\pattern3.jpeg" />
+  </ItemGroup>
   
   <ItemGroup>
        <PackageReference Include="Syncfusion.Blazor" Version="20.2.0.40" />
