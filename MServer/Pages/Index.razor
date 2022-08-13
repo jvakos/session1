@@ -1,0 +1,26 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+
+
+@foreach (var p in Products){
+
+    <div>@p.Description</div>
+}
+
+
+@code{
+    List<Product> Products;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        using var db = new Database();
+
+        Products= db.Products.ToList();
+
+    }
+
+}
