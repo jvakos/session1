@@ -2,17 +2,48 @@
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<input @bind-value="UserInput" @bind-value:event="oninput" @onkeydown="CheckInput"></input>
 
-<SfButton @onclick="IncrementCount" Content="Click me"></SfButton>
+<SfButton @onclick="Calc" Content="Click me"></SfButton>
+<SfButton @onclick="Style" Content="Click me2"></SfButton>
+<SfButton @onclick="Style2" Content="Click me2"></SfButton>
+
+
+<p>Current Num: @val</p>
+
+<div class="@fanis[sval]">random text</div>
+
+
+
+
 
 @code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
+    private int UserInput { get; set; }
+    public int val;
+    public int sval;
+    public string[] fanis = new string[2] {"fanis", "fanis2"};
+    private void CheckInput(KeyboardEventArgs keyEvent)
     {
-        currentCount++;
+        if(keyEvent.Key == "Enter")
+        {
+            val = UserInput;            
+        }
+    }
+    private void Calc()
+    {
+        if(val%2 != 0)
+        {
+            val = (val*3) + 1;
+        }
+        val = val/2;
+    }
+    public void Style()
+    {
+        sval=0;
+    }
+        public void Style2()
+    {
+        sval=1;
     }
 }

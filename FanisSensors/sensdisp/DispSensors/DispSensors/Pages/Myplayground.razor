@@ -1,0 +1,39 @@
+@page "/playground"
+
+
+<ul id="cii-tabmenu" class="nav nav-tabs">
+ <li class="nav-item">
+  <a class="@(myawesometab[0])" data-tabIndex="0" href="/playground" @onclick="@(e => myawesometabclick(e, 0))">Item 1</a>
+  <div class="fanisimage"><img src="https://i.redd.it/mvj6i0usu2k91.jpg" class="rounded" alt="..."></div>
+ </li>
+ <li class="nav-item">
+  <a class="@(myawesometab[1])" data-tabIndex="1" href="/playground" @onclick="@(e => myawesometabclick(e, 1))">Item 2</a>
+  <div class="fanisimage"><img src="https://i.redd.it/fzxfd8gh7yj91.jpg" class="rounded" alt="..."></div>
+ </li>
+ <li class="nav-item">
+  <a class="@(myawesometab[2])" data-tabIndex="2" href="/playground" @onclick="@(e => myawesometabclick(e, 2))">Item 3</a>
+  <div class="fanisimage"><img src="https://i.redd.it/mwvxme41yzj91.jpg" class="rounded" alt="..."></div>
+ </li>
+ <li class="nav-item">
+  <a class="@(myawesometab[3])" data-tabIndex="3" href="/playground" @onclick="@(e => myawesometabclick(e, 3))">Item 4</a>
+  <div class="fanisimage"><img src="https://i.redd.it/hhj1x3afu3k91.jpg" class="rounded" alt="..."></div>
+ </li>
+ <li class="nav-item">
+  <a class="@(myawesometab[4])" data-tabIndex="4" href="/playground" @onclick="@(e => myawesometabclick(e, 4))">Item 5</a>
+  <div class="fanisimage"><img src="https://i.redd.it/5zssxef473k91.jpg" class="rounded" alt="..."></div>
+ </li>
+</ul>
+
+@code
+{
+ private string[] myawesometab = new string[5] { "nav-link active", "nav-link", "nav-link", "nav-link", "nav-link" };
+
+ private void myawesometabclick(MouseEventArgs e, int myawesometabnumber)
+ {
+  for (int i = 0; i < 5; i++)
+  {
+   myawesometab[i] = "nav-link";
+  }
+  myawesometab[myawesometabnumber] = "nav-link active";
+ }
+}
