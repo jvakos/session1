@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MServer/manolishop.db3-wal
+/MServer/manolishop.db3-shm
+/MServer/manolishop.db3

@@ -1,0 +1,24 @@
+﻿@page "/product-list"
+
+
+@foreach (var p in Products)
+{
+
+    <div>@p.Description  <a href="/models/@p.Id">View</a></div>
+}
+
+
+@code {
+    List<Product> Products;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        using var db = new Database();
+
+        Products = db.Products.ToList();
+
+    }
+
+}

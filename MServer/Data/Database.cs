@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ManolisShop.ManolisModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MServer.Data;
 
@@ -15,6 +16,8 @@ namespace ManolisShop
 
         public DbSet<Order> Orders{ get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Model> Models { get; set; }
+
 
         //   public DbSet<User> Users{ get; set; }
 

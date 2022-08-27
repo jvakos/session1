@@ -1,0 +1,31 @@
+﻿@page "/product/edit"
+@attribute [Authorize(Roles = "Admin")]
+
+
+<EditForm Model="editingProduct">
+
+    <label for="descr">Name</label> <br />
+    <InputText id="descr" @bind-Value="editingProduct.Description" />
+
+</EditForm>
+
+<a class="btn btn-primary mt-2" @onclick="Save" >Save</a>
+
+
+
+
+
+@code {
+
+    Product editingProduct=new Product();
+
+
+    void Save()
+    {
+        using var db = new Database();
+        db.Products.Add(editingProduct);
+        db.SaveChanges();
+    }
+
+
+}

@@ -50,7 +50,32 @@ app.MapFallbackToPage("/_Host");
 
 using (var db=new Database())
 {
-    db.Database.EnsureCreated();
+    bool firstTime=db.Database.EnsureCreated();
+    if (firstTime)
+    {
+        db.Roles.Add(new Role { Name = "Admin", NormalizedName = "ADMIN" });
+        db.Roles.Add(new Role { Name = "Client", NormalizedName = "CLIENT" });
+
+        var adminUser = new User
+        {
+            Email = "info@manolishop.gr",
+            NormalizedEmail = "INFO@MANOLISHOP.GR",
+            UserName = "info@manolishop.gr",
+            NormalizedUserName = "INFO@MANOLISHOP.GR",
+            EmailConfirmed = true,
+            SecurityStamp=new Guid().ToString(),
+            Firstname = "Admin",
+            Lastname = "Adminakis",
+        };
+        adminUser.PasswordHash = new PasswordHasher<User>().HashPassword(adminUser, "123!@#qweQWE");
+        db.Users.Add(adminUser);
+        db.SaveChanges();
+
+        db.UserRoles.Add(new IdentityUserRole<int> { RoleId =1, UserId = 1});
+
+        db.SaveChanges();
+
+    }
 }
 
 app.Run();
