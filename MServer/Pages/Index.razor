@@ -1,46 +1,25 @@
 ﻿@page "/"
 
 <PageTitle>Index</PageTitle>
- 
 
 
 
 @foreach (var p in Products){
-   <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://nanosoft.gr/wp-content/uploads/2020/02/cropped-logo-2-225x51.png" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h2 class="card-title">@p.Description</h2>
-      </div>
-    </div>
-  </div>
-</div>
-    //<div>@p.Description</div>
+
+    <div>@p.Description</div>
 }
 
 
 @code{
-
-    //List<Product> Products;
-    List<Product> Products = new();
+    List<Product> Products;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-
         using var db = new Database();
 
         Products= db.Products.ToList();
-
-        Products.Add(new Product {Id=1, Description = "LAptop"});
-        Products.Add(new Product {Id=2, Description = "Keyboard"});
-        Products.Add(new Product {Id=3, Description = "Mouse"});
-
-
 
     }
 

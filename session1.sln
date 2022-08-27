@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dbSession", "dbSession\dbSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionServer", "SessionServer\SessionServer.csproj", "{9EB354C5-4262-4FC5-A67C-0A1647CF8FC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanServer", "CleanServer\CleanServer.csproj", "{315E65B6-CA15-4519-842E-F85F58056BAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanServer", "CleanServer\CleanServer.csproj", "{315E65B6-CA15-4519-842E-F85F58056BAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MServer", "MServer\MServer.csproj", "{2F928FB4-CE96-4EDA-8570-2E5ACF01F08A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MServer", "MServer\MServer.csproj", "{2F928FB4-CE96-4EDA-8570-2E5ACF01F08A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
