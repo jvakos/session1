@@ -5,24 +5,40 @@
 
 <input @bind-value="UserInput" @bind-value:event="oninput" @onkeydown="CheckInput"></input>
 
-<SfButton @onclick="Calc" Content="Click me"></SfButton>
+<SfButton @onclick="Calc"  Content="Click me"></SfButton>
 <SfButton @onclick="Style" Content="Click me2"></SfButton>
 <SfButton @onclick="Style2" Content="Click me2"></SfButton>
 
 
+
 <p>Current Num: @val</p>
 
-<div class="@fanis[sval]">random text</div>
+<div class="@fanis[sval]" style="@(string.Join(';',mystyles))">random text</div>
+
+@*@if (sval==0){
+    <div class="fanis">random text</div>
+}else{
+    <div class="fanis2">random text</div>
+}
+
+<div class="@(sval==0 ? "fanis" : "fanis2")">random text</div>
+
+*@
 
 
+
+<FGauge Percent="gaugePercent" />
 
 
 
 @code {
     private int UserInput { get; set; }
     public int val;
+    int gaugePercent = 10;
     public int sval;
     public string[] fanis = new string[2] {"fanis", "fanis2"};
+    List<string> mystyles = new List<string>();
+    int fontSize = 18;
     private void CheckInput(KeyboardEventArgs keyEvent)
     {
         if(keyEvent.Key == "Enter")
@@ -41,9 +57,24 @@
     public void Style()
     {
         sval=0;
+        mystyles.Clear();
+        gaugePercent += 20;
+
     }
-        public void Style2()
+    public void Style2()
     {
         sval=1;
+        fontSize++;
+        mystyles.Clear();
+        mystyles.Add($"font-size:{fontSize}px");
+        mystyles.Add($"background-color:red");
+
+
+        //var d = new Dictionary<string, string>()
+        //{
+        //    {"font-size","18" },
+        //    {"background-color", "red" }
+        //};
+
     }
 }

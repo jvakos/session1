@@ -1,0 +1,47 @@
+﻿@using System.Globalization
+
+<div class="gauge">
+    <div class="gauge__body">
+        <div class="gauge__fill" style="@turnStyle"></div>
+        <div class="gauge__cover">@Percent%</div>
+    </div>
+</div>
+@*   <script>
+        const gaugeElement = document.querySelector(".gauge");
+
+        function setGaugeValue(gauge, value) {
+            if (value < 0 || value > 1) {
+                return;
+            }
+
+            gauge.querySelector(".gauge__fill").style.transform = `rotate(${value / 2}turn)`;
+            gauge.querySelector(".gauge__cover").textContent = `${Math.round(
+            value * 100
+            )}%`;
+                                            }
+
+    setGaugeValue(gaugeElement, 1);
+
+    </script>*@
+
+@code {
+    [Parameter]
+    public int Percent { get; set; } = 10;
+    string turnStyle = $"transform: rotate(0.25turn);";
+
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        CalculateStyle();
+    }
+
+    void CalculateStyle(){
+        if (Percent > 100) Percent = 100;
+        if (Percent < 0) Percent = 0;
+        double val = ((double)Percent / 100.0) / 2.0;
+        string turnValue = val.ToString(CultureInfo.InvariantCulture);
+        turnStyle = $"transform: rotate({turnValue}turn);";
+    }
+     
+}
