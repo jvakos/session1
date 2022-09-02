@@ -2,6 +2,8 @@ using DispSensors.Data;
 using Syncfusion.Blazor;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+ using System;
+ using System.IO.Ports;
 
 var builder = WebApplication.CreateBuilder(args);
 

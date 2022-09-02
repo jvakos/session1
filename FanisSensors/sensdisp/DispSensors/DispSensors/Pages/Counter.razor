@@ -15,15 +15,7 @@
 
 <div class="@fanis[sval]" style="@(string.Join(';',mystyles))">random text</div>
 
-@*@if (sval==0){
-    <div class="fanis">random text</div>
-}else{
-    <div class="fanis2">random text</div>
-}
 
-<div class="@(sval==0 ? "fanis" : "fanis2")">random text</div>
-
-*@
 
 
 
@@ -32,9 +24,10 @@
 
 
 @code {
+    
     private int UserInput { get; set; }
     public int val;
-    int gaugePercent = 10;
+    int gaugePercent = 0;
     public int sval;
     public string[] fanis = new string[2] {"fanis", "fanis2"};
     List<string> mystyles = new List<string>();
@@ -68,13 +61,35 @@
         mystyles.Clear();
         mystyles.Add($"font-size:{fontSize}px");
         mystyles.Add($"background-color:red");
-
-
-        //var d = new Dictionary<string, string>()
-        //{
-        //    {"font-size","18" },
-        //    {"background-color", "red" }
-        //};
-
     }
+
+ class SerialPortProgram 
+ { 
+  // Create the serial port with basic settings 
+    private SerialPort port = new   SerialPort("COM1", 9600, Parity.None, 8, StopBits.One); 
+    [STAThread] 
+    static void Main(string[] args) 
+    { 
+      // Instatiate this 
+      SerialPortProgram(); 
+    } 
+
+    private static void SerialPortProgram() 
+    { 
+        Console.WriteLine("Incoming Data:");
+         // Attach a method to be called when there
+         // is data waiting in the port's buffer 
+        port.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived); 
+        // Begin communications 
+        port.Open(); 
+        // Enter an application loop to keep this thread alive 
+        Console.ReadLine();
+     } 
+
+    private void port_DataReceived(object sender, SerialDataReceivedEventArgs e) 
+    { 
+       // Show all the incoming data in the port's buffer
+       Console.WriteLine(port.ReadExisting()); 
+    } 
+}    
 }
