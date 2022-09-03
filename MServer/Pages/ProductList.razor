@@ -4,8 +4,25 @@
 @foreach (var p in Products)
 {
 
-    <div>@p.Description  <a href="/models/@p.Id">View</a></div>
+    //<div>@p.Description  <a href="/models/@p.Id">View</a></div>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://laptopmarket.gr/images/thumbnails/500/350/detailed/2/dell-chromebook-3120-1-scaled.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">@p.Description</h5>
+        <p class="card-text">le bit longer.</p>
+        <a href="/models/@p.Id">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 }
+
 
 
 @code {

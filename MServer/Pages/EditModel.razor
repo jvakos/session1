@@ -1,0 +1,40 @@
+﻿@page "/model/edit"
+@attribute [Authorize(Roles = "Admin")]
+
+
+<EditForm Model="modelingProduct">
+
+    <label for="descr">Descript</label>
+    <InputText id="descr" @bind-Value="modelingProduct.Descript" />
+    <label for="descr">Price</label>
+    <InputNumber id="descr" @bind-Value="modelingProduct.Price"  />
+    <label for="descr">Stock</label>
+    <InputNumber id="descr" @bind-Value="modelingProduct.Stock" />
+    <label for="descr">ProductId</label>
+    <InputNumber id="descr" @bind-Value="modelingProduct.ProductId" />
+    <label for="descr">OutOfStock</label> <br />
+    <InputCheckbox id="descr" @bind-Value="modelingProduct.OutOfStock" />
+</EditForm>
+
+<a class="btn btn-primary mt-2" @onclick="Save" >Save</a>
+
+
+
+
+
+
+
+
+@code {
+
+    Model modelingProduct = new Model();
+
+ 
+
+    void Save()
+    {
+        using var db = new Database();
+        db.Models.Add(modelingProduct);
+        db.SaveChanges();
+    }
+}

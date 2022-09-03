@@ -1,17 +1,37 @@
 ﻿@page "/models/{ProductId:int}"
 @using ManolisShop.ManolisModels
 
-<h1>MODELSSSS @ProductId</h1>
+<h1>LAPTOPS @ProductId</h1>
+<button type="button" class="btn btn-primary">
+  Notifications <span class="badge bg-secondary">4</span>
+</button>
 
 @foreach (var p in Models)
 {
 
-    <div>@p.Descript</div>
+       <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://laptopmarket.gr/images/thumbnails/500/350/detailed/2/dell-chromebook-3120-1-scaled.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">@p.Descript</h5>
+        <p class="card-text">le bit longer.</p>
+        <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Καλάθι</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+}
 }
 
 
 @code {
     List<Model> Models;
+
 
 
     [Parameter]
@@ -25,6 +45,19 @@
 
         Models= db.Models.Where(x=>x.ProductId==ProductId).ToList();
 
+    }
+     void AddToCart(int ModelId){
+        foreach (var p in Models){
+            if (p.ModelId==ModelId){
+                CartItem.Cart.Add(new CartItem{ 
+                    ProdId=prodId,
+                    Name=p.Name,
+                    UnitPrice=p.UnitPrice,
+                    Qnt=1
+                });
+                break;
+            }
+        }
     }
 
 
